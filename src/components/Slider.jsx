@@ -3,28 +3,30 @@ import 'swiper/css';
 
 const HeroSlider = () => {
     const slides = [
+
         {
             image: 'https://i.ibb.co.com/VvwtLph/bedroom-1872196-960-720-2.jpg',
-            title: 'Luxury City Apartment',
-            subtitle: 'Discover a stylish, high-rise apartment in the heart of the city, offering modern amenities and panoramic views. Ideal for those seeking vibrant urban living.',
-            buttonText: 'Get Started'
+            title: 'Family-Friendly Suburban Townhouse',
+            subtitle: 'A warm, inviting townhouse designed with family comfort in mind, this space offers multiple bedrooms, a large kitchen, and a private backyard. Located in a friendly suburban neighborhood, this home is surrounded by excellent schools, parks, and community centers. With its spacious layout and ample storage, it’s perfect for families looking to settle down and grow. Enjoy a peaceful setting while still having convenient access to nearby shops, dining, and entertainment options.',
+            buttonText: 'Explore Now'
         },
         {
-            image: 'https://i.ibb.co.com/VvwtLph/bedroom-1872196-960-720-2.jpg',
-            title: 'Cozy Suburban Retreat',
-            subtitle: 'Nestled in a peaceful neighborhood, this apartment provides a warm and inviting space perfect for relaxation, with easy access to local parks and community spots.',
-            buttonText: 'Join Now'
+            image: 'https://i.ibb.co.com/p2zrPyt/room1.jpg',
+            title: 'Elegant Urban Townhouse',
+            subtitle: 'Discover an exquisite townhouse that blends modern design with spacious interiors, perfect for city dwellers seeking both luxury and convenience. This home features high ceilings, large windows, and sleek finishes, creating a bright and airy atmosphere. Located in a prime urban area, you’ll have easy access to trendy cafes, shopping districts, and public transit. Ideal for professionals and families alike, this townhouse offers a unique balance of privacy and connectivity to the vibrant city life outside.',
+            buttonText: 'Discover More'
         },
         {
-            image: 'https://i.ibb.co.com/VvwtLph/bedroom-1872196-960-720-2.jpg',
-            title: 'Modern Studio Apartment',
-            subtitle: ' A sleek and efficient studio designed for comfort and convenience, perfect for individuals or couples looking to enjoy a lively, connected lifestyle.',
-            buttonText: 'Start Practicing'
+            image: 'https://i.ibb.co.com/2Z9p0rN/room3.jpg',
+            title: 'Luxurious Riverside Townhouse',
+            subtitle: 'This stunning townhouse offers luxury living by the river, with expansive views and beautifully designed interiors. Large windows and open-concept rooms maximize natural light and create a connection with the tranquil surroundings. Each room is crafted with fine details and premium finishes, ideal for those seeking a sophisticated lifestyle. Enjoy a spacious deck perfect for entertaining, and take in the serene river views right from your home, offering a retreat-like feel every day.',
+            buttonText: 'View Details'
         }
     ];
+    
 
     return (
-        <section className="relative h-[70vh]">
+        <div className="relative">
             <Swiper
                 className='h-[100vh]'
                 spaceBetween={50}
@@ -35,14 +37,13 @@ const HeroSlider = () => {
                     <SwiperSlide key={index}>
                         <div
                             className="relative h-full bg-cover bg-center"
-                            style={{ backgroundImage: `url(${slide.image})` }}
-                        >
-                            <div className="absolute inset-0 bg-black opacity-50"></div>
-                            <div className="relative z-10 flex items-center justify-center text-center text-white h-full">
-                                <div>
-                                    <h1 className="text-4xl font-bold">{slide.title}</h1>
-                                    <p className="text-xl mt-4">{slide.subtitle}</p>
-                                    <button className="mt-6 px-6 py-2 bg-blue-500 text-white rounded-full">
+                            style={{ backgroundImage: `url(${slide.image})` }}>
+                            <div className="absolute z-1 inset-0 bg-black opacity-50"></div>
+                            <div className="relative z-0 flex items-center justify-center text-center text-white h-full">
+                                <div className='px-64'>
+                                    <h1 className="text-5xl font-bold text-[#000000]">{slide.title}</h1>
+                                    <p className="text-xl mt-7">{slide.subtitle}</p>
+                                    <button className="mt-6 px-6 py-2 bg-[#1791c8] text-white rounded-full hover:border-[#1791c8] text-[#1791c8]">
                                         {slide.buttonText}
                                     </button>
                                 </div>
@@ -51,7 +52,7 @@ const HeroSlider = () => {
                     </SwiperSlide>
                 ))}
             </Swiper>
-        </section>
+        </div>
     );
 };
 

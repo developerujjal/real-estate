@@ -1,10 +1,16 @@
 import Slider from "../../components/Slider";
+import AboutHouses from "../../layouts/HomeLayouts/AboutHouses";
 
 const Home = () => {
     return (
-        <div>
-            <Slider />
-        </div>
+        <>
+            <section>
+                <Slider />
+            </section>
+            <section>
+                <AboutHouses />
+            </section>
+        </>
     );
 };
 
