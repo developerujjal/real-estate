@@ -3,16 +3,19 @@ import Root from "../root/Root";
 import SignUp from "../pages/SignUp/SignUp";
 import Home from "../pages/Home/Home";
 import SignIn from "../pages/SignIn/SignIn";
+import ErrorPage from "../pages/ErrorPage/ErrorPage";
 
 const routes = createBrowserRouter(
     [
         {
             path: '/',
             element: <Root />,
+            errorElement: <ErrorPage />,
             children: [
                 {
                     index: true,
                     element: <Home />
+
                 },
                 {
                     path: 'sign-up',

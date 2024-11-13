@@ -1,6 +1,8 @@
 import EstatesCard from "../../components/EstatesCard/EstatesCard";
+import PropTypes from 'prop-types';
 
-const EstatesSection = () => {
+const EstatesSection = ({ estatesData }) => {
+    console.log(estatesData)
     return (
         <div className="my-20">
             <div className="container mx-auto px-3 md:px-12">
@@ -18,8 +20,10 @@ const EstatesSection = () => {
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <EstatesCard />
+                    <div className="flex flex-col gap-14 md:flex-row md:flex-wrap md:justify-between">
+                        {
+                            estatesData.map(item => <EstatesCard estates={item} key={item.id}/>)
+                        }
                     </div>
                     <div>
 
@@ -29,5 +33,9 @@ const EstatesSection = () => {
         </div>
     );
 };
+
+EstatesSection.propTypes = {
+    estatesData: PropTypes.array
+}
 
 export default EstatesSection;
