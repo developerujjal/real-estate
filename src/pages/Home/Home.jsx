@@ -1,8 +1,9 @@
+import Slider from "../../components/Slider";
 
 const Home = () => {
     return (
         <div>
-            <h1>THis is an HOme</h1>
+            <Slider />
         </div>
     );
 };
