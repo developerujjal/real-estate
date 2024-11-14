@@ -4,6 +4,7 @@ import TestimonialCard from "../components/TestimonialCard/TestimonialCard";
 
 const Testimonial = () => {
     const [testimonies, setTestimonies] = useState([])
+   
 
     useEffect(() => {
         fetch('/testimonial.json')
@@ -22,7 +23,7 @@ const Testimonial = () => {
                     <div className="mb-12 space-y-5 md:mb-16 md:text-center">
                         <div
                             className="inline-block px-3 py-1 text-sm font-semibold text-[#1F313F] rounded-lg md:text-center text-cn bg-[#202c47] bg-opacity-60 hover:cursor-pointer hover:bg-opacity-40">
-                            Words from Others
+                            Words from Others 
                         </div>
                         <h1 className="mb-5 text-4xl md:text-5xl font-semibold text-[#1F313F] md:text-center">
                             It&apos;s not just us.
@@ -38,9 +39,9 @@ const Testimonial = () => {
 
 
                     <ul className="flex flex-col gap-5 flex-wrap md:flex-row">
-                       {
-                        testimonies.map((testi, index) => <TestimonialCard testiInfo={testi} key={index} />)
-                       }
+                        {
+                            testimonies.map((testi, index) => <TestimonialCard testiInfo={testi} key={index} />)
+                        }
                     </ul>
 
 

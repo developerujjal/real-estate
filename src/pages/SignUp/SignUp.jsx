@@ -1,6 +1,38 @@
+import { useContext } from 'react';
 import logo from '../../assets/log.png'
+import { AuthContext } from '../../assets/createContext/Contexts';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const SignUp = () => {
+
+    const { createNewUser } = useContext(AuthContext)
+
+    const handleSignUp = (e) => {
+        e.preventDefault()
+        const form = new FormData(e.currentTarget)
+        const name = form.get('name')
+        const photoLink = form.get('photo')
+        const email = form.get('email')
+        const password = form.get('password')
+
+        createNewUser(email, password)
+            .then(userCredential => {
+                toast.success('Signed up successfully')
+                const user = userCredential.user;
+                console.log(user)
+            })
+            .catch(error => {
+                const errorMessage = error.message;
+                const errorSplit = errorMessage.split('(')[1].split(')')[0];
+                const emailError = errorSplit.split('/')[1].replace(/-/g, ' ').replace('email', 'Email');
+
+                toast.error(emailError)
+
+            })
+    }
+
+
     return (
         <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
             <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
@@ -9,7 +41,9 @@ const SignUp = () => {
                         <img src={logo}
                             className="w-64 mx-auto" />
                     </div>
-                    <form className="mt-2 flex flex-col items-center">
+                    <form
+                        onSubmit={handleSignUp}
+                        className="mt-2 flex flex-col items-center">
                         <div className="w-full flex-1 mt-8">
 
                             <div className="mt- 4 mb-12 border-b text-center">
@@ -48,7 +82,7 @@ const SignUp = () => {
                                 <div className="relative flex justify-center items-center mt-5">
                                     <input
                                         className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                                        type="password" placeholder="Password" />
+                                        type="password" name='password' placeholder="Password" />
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-4 h-4 absolute  right-4 cursor-pointer" viewBox="0 0 128 128">
                                         <path d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z" data-original="#000000"></path>
                                     </svg>
@@ -57,6 +91,7 @@ const SignUp = () => {
 
 
                                 <button
+                                    type='submit'
                                     className="mt-5 tracking-wide font-semibold bg-[#1791c8] text-gray-100 w-full py-4 rounded-lg hover:bg-[#000000] transition-all duration-300 ease-in-out flex items-center justify-center focus:shadow-outline focus:outline-none">
                                     <svg className="w-6 h-6 -ml-2" fill="none" stroke="currentColor" strokeWidth="2"
                                         strokeLinecap="round" strokeLinejoin="round">
@@ -68,6 +103,9 @@ const SignUp = () => {
                                         Sign Up
                                     </span>
                                 </button>
+
+                                <ToastContainer />
+
                                 <p className="mt-6 text-xs text-gray-600 text-center">
                                     I agree to follow RealState&apos;s
                                     <a href="#" className="border-b border-gray-500 border-dotted">
