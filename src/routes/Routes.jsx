@@ -6,6 +6,7 @@ import SignIn from "../pages/SignIn/SignIn";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Contact from "../pages/Contact/Contact";
 import EstatesDetails from "../pages/EstatesDetails/EstatesDetails";
+import PrivateRoutes from "../root/PrivateRoutes";
 
 const routes = createBrowserRouter(
     [
@@ -21,11 +22,11 @@ const routes = createBrowserRouter(
                 },
                 {
                     path: '/:id',
-                    element: <EstatesDetails />
+                    element: <PrivateRoutes><EstatesDetails /></PrivateRoutes>
                 },
                 {
                     path: 'contact',
-                    element:<Contact />
+                    element: <Contact />
                 },
                 {
                     path: 'sign-up',
