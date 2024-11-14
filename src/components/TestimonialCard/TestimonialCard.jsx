@@ -8,7 +8,7 @@ const TestimonialCard = ({ testiInfo }) => {
     } = testiInfo;
     return (
         <div
-            className=" bg-white rounded-xl shadow-md overflow-hidden w-[49%]">
+            className=" bg-white rounded-xl shadow-md overflow-hidden w-full md:w-[49%]">
 
             <div className="md:flex">
                 <div className="md:shrink-0">

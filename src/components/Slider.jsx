@@ -28,7 +28,7 @@ const HeroSlider = () => {
     return (
         <div className="relative">
             <Swiper
-                className='h-[100vh]'
+                className='h-[100%] md:h-[100vh]'
                 spaceBetween={50}
                 slidesPerView={1}
 
@@ -40,9 +40,9 @@ const HeroSlider = () => {
                             style={{ backgroundImage: `url(${slide.image})` }}>
                             <div className="absolute z-1 inset-0 bg-black opacity-50"></div>
                             <div className="relative z-0 flex items-center justify-center text-center text-white h-full">
-                                <div className='px-64'>
-                                    <h1 className="text-5xl font-bold text-[#000000]">{slide.title}</h1>
-                                    <p className="text-xl mt-7">{slide.subtitle}</p>
+                                <div className='py-5 px-1 md:px-64'>
+                                    <h1 className="text-4xl md:text-5xl font-bold text-[#000000]">{slide.title}</h1>
+                                    <p className="text-lg md:text-xl mt-7">{slide.subtitle}</p>
                                     <button className="mt-6 px-6 py-2 bg-[#1791c8] text-white rounded-full hover:border-[#1791c8] text-[#1791c8]">
                                         {slide.buttonText}
                                     </button>
