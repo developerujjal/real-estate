@@ -3,6 +3,8 @@ import logo from '../../assets/log.png'
 import { AuthContext } from '../../assets/createContext/Contexts';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { signOut, updateProfile } from 'firebase/auth';
+import auth from '../../firebaseConfig/firebase.config';
 
 const SignUp = () => {
 
@@ -40,9 +42,16 @@ const SignUp = () => {
 
         createNewUser(email, password)
             .then(userCredential => {
-                toast.success('Signed up successfully')
+                toast.success('Signed up successfully');
                 const user = userCredential.user;
                 console.log(user)
+                updateProfile(user, {
+                    displayName: name,
+                    photoURL: photoLink
+                });
+
+                signOut(auth);
+
             })
             .catch(error => {
                 const errorMessage = error.message;

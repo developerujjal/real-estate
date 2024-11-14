@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 const EstatesCard = ({ estates }) => {
 
     const {
-        // id,
+        id,
         image,
         estate_title,
         property_type,
@@ -55,6 +55,7 @@ const EstatesCard = ({ estates }) => {
                             </svg>
                         </Link>
                         <Link
+                        to={`/${id}`}
                             className="rounded-full w-9 h-9 flex items-center justify-center bg-white border">
                             <svg xmlns="http://www.w3.org/2000/svg" height="18px" viewBox="0 -960 960 960" width="18px" fill="#1791c8"><path d="m560-240-56-58 142-142H160v-80h486L504-662l56-58 240 240-240 240Z" /></svg>
                         </Link>

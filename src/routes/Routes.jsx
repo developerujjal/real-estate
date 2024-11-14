@@ -5,6 +5,7 @@ import Home from "../pages/Home/Home";
 import SignIn from "../pages/SignIn/SignIn";
 import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Contact from "../pages/Contact/Contact";
+import EstatesDetails from "../pages/EstatesDetails/EstatesDetails";
 
 const routes = createBrowserRouter(
     [
@@ -17,6 +18,10 @@ const routes = createBrowserRouter(
                     index: true,
                     element: <Home />
 
+                },
+                {
+                    path: '/:id',
+                    element: <EstatesDetails />
                 },
                 {
                     path: 'contact',

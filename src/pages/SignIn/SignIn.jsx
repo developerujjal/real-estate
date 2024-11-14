@@ -2,9 +2,11 @@ import { useContext } from "react";
 import { AuthContext } from "../../assets/createContext/Contexts";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
+import { useNavigate } from "react-router-dom";
 
 const SignIn = () => {
     const { userSignIn } = useContext(AuthContext)
+    const navigate = useNavigate()
 
     const handleLogIn = (e) => {
         e.preventDefault();
@@ -14,9 +16,10 @@ const SignIn = () => {
 
         userSignIn(email, password)
             .then(userCredential => {
-                toast.success('Successfully logged in')
                 const user = userCredential.user;
                 console.log(user)
+                toast.success('Successfully logged in')
+                navigate('/')
             })
             .catch(() => {
                 toast.error('Invalid credential')
