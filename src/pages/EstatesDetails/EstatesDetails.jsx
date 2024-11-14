@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
 
 const EstatesDetails = () => {
@@ -20,6 +21,9 @@ const EstatesDetails = () => {
 
     return (
         <div className="bg-gray-100 px-6 py-12 font-sans">
+            <Helmet>
+                <title>Estate Details | Your Dream is Here</title>
+            </Helmet>
             <div className="lg:max-w-7xl max-w-lg mx-auto px-6 py-8 bg-white rounded-lg shadow-md">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
                     <div className="max-h-80">

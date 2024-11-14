@@ -3,7 +3,7 @@ import AboutHouses from "../../layouts/HomeLayouts/AboutHouses";
 import EstatesSection from "../../layouts/HomeLayouts/EstatesSection";
 import { useEffect, useState } from "react";
 import Testimonial from "../../layouts/Testimonial";
-
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
 
@@ -19,6 +19,9 @@ const Home = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Real Estate - Your Dream is Here!</title>
+            </Helmet>
             <section>
                 <Slider />
             </section>
@@ -31,7 +34,7 @@ const Home = () => {
             <section>
                 <Testimonial />
             </section>
-            
+
         </>
     );
 };

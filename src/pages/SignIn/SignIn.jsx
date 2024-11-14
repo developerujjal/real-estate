@@ -3,6 +3,7 @@ import { AuthContext } from "../../assets/createContext/Contexts";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const SignIn = () => {
     const { userSignIn } = useContext(AuthContext)
@@ -28,7 +29,11 @@ const SignIn = () => {
 
 
     return (
+
         <div className="min-h-screen bg-gray-100 text-gray-900 flex justify-center">
+            <Helmet>
+                <title>Log In | Real Estate</title>
+            </Helmet>
             <div className="max-w-screen-xl m-0 sm:m-10 bg-white shadow sm:rounded-lg flex justify-center flex-1">
                 <div className="lg:w-1/2 xl:w-5/12 p-6 sm:p-12">
 
@@ -130,6 +135,7 @@ const SignIn = () => {
                 </div>
             </div>
         </div>
+
     );
 };
 
