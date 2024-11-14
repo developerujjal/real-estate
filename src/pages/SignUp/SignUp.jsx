@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import logo from '../../assets/log.png'
 import { AuthContext } from '../../assets/createContext/Contexts';
 import { ToastContainer, toast } from 'react-toastify';
@@ -7,6 +7,11 @@ import 'react-toastify/dist/ReactToastify.css';
 const SignUp = () => {
 
     const { createNewUser } = useContext(AuthContext)
+    const [showPassword, setShowPassword] = useState(false)
+    const [passwordError, setPasswordError] = useState('')
+    const [emailError, setEmailError] = useState('')
+
+
 
     const handleSignUp = (e) => {
         e.preventDefault()
@@ -15,6 +20,23 @@ const SignUp = () => {
         const photoLink = form.get('photo')
         const email = form.get('email')
         const password = form.get('password')
+
+        setPasswordError('')
+        setEmailError('')
+
+        const letterRegex = /[A-Z]/;
+        const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
+        const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+
+        if (password.length < 6) {
+            return setPasswordError('Password must be at least 7 characters.')
+        } else if (!letterRegex.test(password)) {
+            return setPasswordError('Password must contain an uppercase letter.')
+        } else if (!specialCharRegex.test(password)) {
+            return setPasswordError('Password does not contain a special character.')
+        } else if (!gmailRegex.test(email)) {
+            return setEmailError('Please enter a valid Gmail address.')
+        }
 
         createNewUser(email, password)
             .then(userCredential => {
@@ -78,15 +100,29 @@ const SignUp = () => {
                                         type="email" name='email' placeholder="Email" />
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#bbb" className="w-4 h-4 absolute right-4"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" /></svg>
                                 </div>
+                                <p className='text-red-500'><span>{emailError}</span></p>
 
                                 <div className="relative flex justify-center items-center mt-5">
                                     <input
                                         className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                                        type="password" name='password' placeholder="Password" />
-                                    <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-4 h-4 absolute  right-4 cursor-pointer" viewBox="0 0 128 128">
-                                        <path d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z" data-original="#000000"></path>
-                                    </svg>
+                                        type={showPassword ? 'text' : 'password'} name='password' required placeholder="Password" />
+
+                                    {
+                                        showPassword ?
+                                            <svg
+                                                onClick={() => setShowPassword(!showPassword)}
+
+                                                xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#bbb" stroke="#bbb" className="w-4 h-4 absolute  right-4 cursor-pointer"><path d="m644-428-58-58q9-47-27-88t-93-32l-58-58q17-8 34.5-12t37.5-4q75 0 127.5 52.5T660-500q0 20-4 37.5T644-428Zm128 126-58-56q38-29 67.5-63.5T832-500q-50-101-143.5-160.5T480-720q-29 0-57 4t-55 12l-62-62q41-17 84-25.5t90-8.5q151 0 269 83.5T920-500q-23 59-60.5 109.5T772-302Zm20 246L624-222q-35 11-70.5 16.5T480-200q-151 0-269-83.5T40-500q21-53 53-98.5t73-81.5L56-792l56-56 736 736-56 56ZM222-624q-29 26-53 57t-41 67q50 101 143.5 160.5T480-280q20 0 39-2.5t39-5.5l-36-38q-11 3-21 4.5t-21 1.5q-75 0-127.5-52.5T300-500q0-11 1.5-21t4.5-21l-84-82Zm319 93Zm-151 75Z" /></svg> :
+
+                                            <svg
+                                                onClick={() => setShowPassword(!showPassword)}
+                                                xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-4 h-4 absolute right-4 cursor-pointer" viewBox="0 0 128 128">
+                                                <path d="M64 104C22.127 104 1.367 67.496.504 65.943a4 4 0 0 1 0-3.887C1.367 60.504 22.127 24 64 24s62.633 36.504 63.496 38.057a4 4 0 0 1 0 3.887C126.633 67.496 105.873 104 64 104zM8.707 63.994C13.465 71.205 32.146 96 64 96c31.955 0 50.553-24.775 55.293-31.994C114.535 56.795 95.854 32 64 32 32.045 32 13.447 56.775 8.707 63.994zM64 88c-13.234 0-24-10.766-24-24s10.766-24 24-24 24 10.766 24 24-10.766 24-24 24zm0-40c-8.822 0-16 7.178-16 16s7.178 16 16 16 16-7.178 16-16-7.178-16-16-16z" data-original="#000000"></path>
+                                            </svg>
+                                    }
+
                                 </div>
+                                <p className='text-red-500'><span>{passwordError}</span></p>
 
 
 
