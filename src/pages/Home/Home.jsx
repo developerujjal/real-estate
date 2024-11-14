@@ -2,9 +2,11 @@ import Slider from "../../components/Slider";
 import AboutHouses from "../../layouts/HomeLayouts/AboutHouses";
 import EstatesSection from "../../layouts/HomeLayouts/EstatesSection";
 import { useEffect, useState } from "react";
+import Testimonial from "../../layouts/Testimonial";
+
 
 const Home = () => {
-    
+
     const [estatesData, setEstatesData] = useState([])
 
     useEffect(() => {
@@ -26,6 +28,10 @@ const Home = () => {
             <section>
                 <EstatesSection estatesData={estatesData} />
             </section>
+            <section>
+                <Testimonial />
+            </section>
+            
         </>
     );
 };

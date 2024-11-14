@@ -1,0 +1,62 @@
+[
+    {
+        "name": "Alice Thompson",
+        "customer_type": "Townhouse Buyer",
+        "review": "Finding the perfect townhouse was easy with your help. The process was seamless, and I'm thrilled with my new home!"
+    },
+    {
+        "name": "John Rivera",
+        "customer_type": "Rental Tenant",
+        "review": "The team provided excellent support and made finding a rental smooth and stress-free. Highly recommend!"
+    },
+    {
+        "name": "Emma Wilson",
+        "customer_type": "House Buyer",
+        "review": "I never thought buying a home could be this simple. The options and guidance provided were outstanding."
+    },
+    {
+        "name": "Michael Lee",
+        "customer_type": "Apartment Renter",
+        "review": "Great experience finding an apartment with this team. They truly understood my needs and found the ideal spot."
+    },
+    {
+        "name": "Sofia Martinez",
+        "customer_type": "Investment Property Buyer",
+        "review": "As an investor, I appreciated the insights and attention to detail. This team really knows the market!"
+    },
+    {
+        "name": "David Kim",
+        "customer_type": "House Seller",
+        "review": "Selling my home was easy and straightforward. They handled everything professionally and quickly."
+    },
+    {
+        "name": "Olivia Brown",
+        "customer_type": "Vacation Home Buyer",
+        "review": "I found my dream vacation home thanks to their expertise. They made the entire experience delightful."
+    },
+    {
+        "name": "Liam Anderson",
+        "customer_type": "First-Time Home Buyer",
+        "review": "Navigating my first home purchase was a breeze. The team was supportive and knowledgeable every step of the way."
+    },
+    {
+        "name": "Sophia Davis",
+        "customer_type": "Commercial Property Buyer",
+        "review": "Amazing service! They found the perfect commercial property for my business and made sure all details were covered."
+    },
+    {
+        "name": "Ethan Thomas",
+        "customer_type": "Luxury Property Buyer",
+        "review": "An incredible experience with top-notch service. They found the exact luxury property I was looking for."
+    },
+    {
+        "name": "Grace Walker",
+        "customer_type": "Relocation Client",
+        "review": "Moving to a new city was much easier thanks to their dedicated support and valuable recommendations."
+    },
+    {
+        "name": "Jack Turner",
+        "customer_type": "Land Buyer",
+        "review": "They provided excellent guidance in purchasing land for future development. Couldn’t have done it without them!"
+    }
+]

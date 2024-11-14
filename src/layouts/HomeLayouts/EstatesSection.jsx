@@ -2,7 +2,7 @@ import EstatesCard from "../../components/EstatesCard/EstatesCard";
 import PropTypes from 'prop-types';
 
 const EstatesSection = ({ estatesData }) => {
-    console.log(estatesData)
+
     return (
         <div className="my-20">
             <div className="container mx-auto px-3 md:px-12">

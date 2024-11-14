@@ -7,6 +7,7 @@ const EstatesCard = ({ estates }) => {
         // id,
         image,
         estate_title,
+        property_type,
         status,
         bed,
         bath,
@@ -16,7 +17,7 @@ const EstatesCard = ({ estates }) => {
 
 
     return (
-        <div className="bg-[#F8F8F8] rounded-lg overflow-hidden transition-shadow duration-300 ease-in-out shadow-none hover:shadow-custom hover:cursor-grab w-[30%]">
+        <div className="bg-[#F8F8F8] rounded-lg overflow-hidden transition-shadow duration-300 ease-in-out shadow-none hover:shadow-custom hover:cursor-grab w-full md:w-[30%]">
             <div className="relative">
                 <img className="w-full h-60" src={image} alt="" />
                 <div className="absolute top-0 right-0 bg-[#1791c8] text-white px-6 py-2.5 my-5 mx-5 rounded-md text-lg font-semibold">{status}
@@ -24,7 +25,7 @@ const EstatesCard = ({ estates }) => {
             </div>
             <div className="pt-5 px-6 pb-7">
                 <div className="flex justify-between items-center">
-                    <Link className="border border-[#E3E3E3] rounded px-4 py-1.5 text-lg font-normal cursor-pointer">Family</Link>
+                    <Link className="border border-[#E3E3E3] rounded px-4 py-1.5 text-lg font-normal cursor-pointer">{property_type}</Link>
                     <p className="text-[#1F313F] text-lg font-semibold"><span>23,000$</span></p>
                 </div>
                 <div className="flex justify-between my-5">
