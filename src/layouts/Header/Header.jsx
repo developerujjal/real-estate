@@ -59,17 +59,22 @@ const Header = () => {
                                     <img src={logo} alt="logo" className="w-56" />
                                 </a>
                             </li>
-                            <li className="max-lg:border-b border-gray-300 max-lg:py-3 px-3">
-                                <NavLink to="/" className="hover:text-[#1791c8] text-[#1791c8] font-semibold text-base cursor-pointer">Home</NavLink>
+                            <li className="max-lg:border-b border-gray-300 font-semibold max-lg:py-3 px-3">
+                                <NavLink to="/" className={({ isActive }) =>
+                                    `hover:text-[#1791c8] ${isActive ? 'text-[#1791c8]' : 'text-gray-500'} text-base cursor-pointer`}>Home</NavLink>
                             </li>
                             <li className="max-lg:border-b border-gray-300 font-semibold max-lg:py-3 px-3">
-                                <NavLink to="/about" className="hover:text-[#1791c8] text-gray-500 text-base cursor-pointer">About Us</NavLink>
+                                <NavLink to="/about" className={({ isActive }) =>
+                                    `hover:text-[#1791c8] ${isActive ? 'text-[#1791c8]' : 'text-gray-500'} text-base cursor-pointer`}>About Us</NavLink>
                             </li>
                             <li className="max-lg:border-b border-gray-300 font-semibold max-lg:py-3 px-3">
-                                <NavLink to="/services" className="hover:text-[#1791c8] text-gray-500 text-base cursor-pointer">Services</NavLink>
+                                <NavLink to="/services" className={({ isActive }) =>
+                                    `hover:text-[#1791c8] ${isActive ? 'text-[#1791c8]' : 'text-gray-500'} text-base cursor-pointer`}>Services</NavLink>
                             </li>
                             <li className="max-lg:border-b border-gray-300 font-semibold max-lg:py-3 px-3">
-                                <NavLink to="/contact" className="hover:text-[#1791c8] text-gray-500 text-base cursor-pointer">Contact</NavLink>
+                                <NavLink to="/contact" className={({ isActive }) =>
+                                    `hover:text-[#1791c8] ${isActive ? 'text-[#1791c8]' : 'text-gray-500'} text-base cursor-pointer`
+                                }>Contact</NavLink>
                             </li>
                         </ul>
                     </div>
@@ -79,11 +84,11 @@ const Header = () => {
                         {loading ?
                             <>
                                 <svg xmlns="http://www.w3.org/2000/svg" className="w-10 animate-spin fill-blue-600 block"
-                                        viewBox="0 0 24 24">
-                                        <path
-                                            d="M12 22c5.421 0 10-4.579 10-10h-2c0 4.337-3.663 8-8 8s-8-3.663-8-8c0-4.336 3.663-8 8-8V2C6.579 2 2 6.58 2 12c0 5.421 4.579 10 10 10z"
-                                            data-original="#000000" />
-                                    </svg>
+                                    viewBox="0 0 24 24">
+                                    <path
+                                        d="M12 22c5.421 0 10-4.579 10-10h-2c0 4.337-3.663 8-8 8s-8-3.663-8-8c0-4.336 3.663-8 8-8V2C6.579 2 2 6.58 2 12c0 5.421 4.579 10 10 10z"
+                                        data-original="#000000" />
+                                </svg>
                             </>
                             : user ?
                                 <>

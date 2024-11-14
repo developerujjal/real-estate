@@ -2,12 +2,13 @@ import { useContext } from "react";
 import { AuthContext } from "../../assets/createContext/Contexts";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 const SignIn = () => {
     const { userSignIn } = useContext(AuthContext)
     const navigate = useNavigate()
+    const location = useLocation()
 
     const handleLogIn = (e) => {
         e.preventDefault();
@@ -20,7 +21,7 @@ const SignIn = () => {
                 const user = userCredential.user;
                 console.log(user)
                 toast.success('Successfully logged in')
-                navigate('/')
+                navigate(location?.state ? location?.state : '/')
             })
             .catch(() => {
                 toast.error('Invalid credential')
