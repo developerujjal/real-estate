@@ -1,10 +1,13 @@
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../../assets/log.png';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../assets/createContext/Contexts';
+import ProfileDropDown from '../ProfileDropDown/ProfileDropDown';
 
 const Header = () => {
     // State for controlling menu visibility
     const [menuOpen, setMenuOpen] = useState(false);
+    const { user } = useContext(AuthContext)
 
     // Function to toggle the menu
     const handleMenuToggle = () => {
@@ -59,20 +62,28 @@ const Header = () => {
 
                     {/* Toggle Button */}
                     <div className="flex max-lg:ml-auto space-x-3">
-                        <div className="flex gap-2">
-                            <Link
-                                to={'/sign-in'}
-                                className="px-4 py-2 text-[15px] rounded-full font-bold text-white border-2 border-[#1791c8] bg-[#1791c8] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#1791c8]"
-                            >
-                                Login
-                            </Link>
-                            <Link
-                                to={'/sign-up'}
-                                className="px-4 py-2 text-[15px] rounded-full font-bold text-white border-2 border-[#1791c8] bg-[#1791c8] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#1791c8]"
-                            >
-                                Sign up
-                            </Link>
-                        </div>
+                        {
+                            user ?
+                                <ProfileDropDown user={user} />
+                                :
+
+                                <>
+                                    <div className="flex gap-2">
+                                        <Link
+                                            to={'/sign-in'}
+                                            className="px-4 py-2 text-[15px] rounded-full font-bold text-white border-2 border-[#1791c8] bg-[#1791c8] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#1791c8]"
+                                        >
+                                            Login
+                                        </Link>
+                                        <Link
+                                            to={'/sign-up'}
+                                            className="px-4 py-2 text-[15px] rounded-full font-bold text-white border-2 border-[#1791c8] bg-[#1791c8] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#1791c8]"
+                                        >
+                                            Sign up
+                                        </Link>
+                                    </div>
+                                </>
+                        }
 
                         <button onClick={handleMenuToggle} className="lg:hidden">
                             <svg className="w-7 h-7" fill="#000" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

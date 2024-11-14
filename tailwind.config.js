@@ -14,9 +14,10 @@ export default {
       outfit: ['"Outfit", serif'],
     },
     boxShadow: {
-      'custom': 'rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px',
+      'custom': 'rgba(0, 0, 0, 0.15) 2.4px 2.4px 3.2px',
     },
   },
   plugins: [],
 }
+
 

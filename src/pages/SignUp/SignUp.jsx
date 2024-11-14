@@ -28,14 +28,14 @@ const SignUp = () => {
         const specialCharRegex = /[!@#$%^&*(),.?":{}|<>]/;
         const gmailRegex = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
 
-        if (password.length < 6) {
+        if (!gmailRegex.test(email)) {
+            return setEmailError('Please enter a valid Gmail address.')
+        } else if (password.length < 6) {
             return setPasswordError('Password must be at least 7 characters.')
         } else if (!letterRegex.test(password)) {
             return setPasswordError('Password must contain an uppercase letter.')
         } else if (!specialCharRegex.test(password)) {
             return setPasswordError('Password does not contain a special character.')
-        } else if (!gmailRegex.test(email)) {
-            return setEmailError('Please enter a valid Gmail address.')
         }
 
         createNewUser(email, password)
@@ -80,7 +80,7 @@ const SignUp = () => {
                                 <div className="relative flex items-center">
                                     <input
                                         className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                                        type="text" name='name' placeholder="Name" />
+                                        type="text" name='name' required placeholder="Name" />
                                     <svg xmlns="http://www.w3.org/2000/svg" fill="#bbb" stroke="#bbb" className="w-4 h-4 absolute right-4" viewBox="0 0 24 24">
                                         <circle cx="10" cy="7" r="6" data-original="#000000"></circle>
                                         <path d="M14 15H6a5 5 0 0 0-5 5 3 3 0 0 0 3 3h12a3 3 0 0 0 3-3 5 5 0 0 0-5-5zm8-4h-2.59l.3-.29a1 1 0 0 0-1.42-1.42l-2 2a1 1 0 0 0 0 1.42l2 2a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42l-.3-.29H22a1 1 0 0 0 0-2z" data-original="#000000"></path>
@@ -90,14 +90,14 @@ const SignUp = () => {
                                 <div className="relative flex items-center mt-5">
                                     <input
                                         className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                                        type="text" name='photo' placeholder="Photo URL" />
+                                        type="text" name='photo' required placeholder="Photo URL" />
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#bbb" className="w-4 h-4 absolute right-4"><path d="M440-440ZM120-120q-33 0-56.5-23.5T40-200v-480q0-33 23.5-56.5T120-760h126l74-80h240v80H355l-73 80H120v480h640v-360h80v360q0 33-23.5 56.5T760-120H120Zm640-560v-80h-80v-80h80v-80h80v80h80v80h-80v80h-80ZM440-260q75 0 127.5-52.5T620-440q0-75-52.5-127.5T440-620q-75 0-127.5 52.5T260-440q0 75 52.5 127.5T440-260Zm0-80q-42 0-71-29t-29-71q0-42 29-71t71-29q42 0 71 29t29 71q0 42-29 71t-71 29Z" /></svg>
                                 </div>
 
                                 <div className="relative flex items-center mt-5">
                                     <input
                                         className="w-full px-8 py-4 rounded-lg font-medium bg-gray-100 border border-gray-200 placeholder-gray-500 text-sm focus:outline-none focus:border-gray-400 focus:bg-white"
-                                        type="email" name='email' placeholder="Email" />
+                                        type="email" name='email' required placeholder="Email" />
                                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#bbb" className="w-4 h-4 absolute right-4"><path d="M160-160q-33 0-56.5-23.5T80-240v-480q0-33 23.5-56.5T160-800h640q33 0 56.5 23.5T880-720v480q0 33-23.5 56.5T800-160H160Zm320-280L160-640v400h640v-400L480-440Zm0-80 320-200H160l320 200ZM160-640v-80 480-400Z" /></svg>
                                 </div>
                                 <p className='text-red-500'><span>{emailError}</span></p>
