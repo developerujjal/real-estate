@@ -1,6 +1,35 @@
+import PropTypes from 'prop-types';
+import { useContext } from 'react';
+import { AuthContext } from '../../assets/createContext/Contexts';
+import { updateProfile } from 'firebase/auth';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 const EditModal = ({ handleCloseModal, isModalOpen }) => {
 
+    const { user } = useContext(AuthContext)
+
+    const handleUpdateProfile = (e) => {
+        e.preventDefault()
+        const form = new FormData(e.currentTarget);
+        const newName = form.get('name');
+        const newURL = form.get('photo')
+
+        updateProfile(user, {
+            displayName: newName,
+            photoURL: newURL
+        })
+            .then(() => {
+                toast.success('Profile updated!')
+            })
+            .catch(error => {
+                console.error(error)
+                toast.error('An error occurred')
+            })
+
+    
+    }
 
     return (
         <div
@@ -19,22 +48,26 @@ const EditModal = ({ handleCloseModal, isModalOpen }) => {
                 </svg>
 
 
-                <form className="my-8 space-y-4">
+                <form
+                    onSubmit={handleUpdateProfile}
+                    className="my-8 space-y-4">
                     <div className="flex items-center">
                         <input type="text" name="name" placeholder="Enter Name"
                             className="px-4 py-3 bg-white text-gray-800 w-full text-sm border border-gray-300 focus:border-blue-600 outline-none rounded-lg" />
                     </div>
 
                     <div className="flex items-center">
-                        <input type="text" name="photo" placeholder="Enter PhotoURL"
+                        <input type="text" name="photo" placeholder="Enter Photo URL"
                             className="px-4 py-3 bg-white text-gray-800 w-full text-sm border border-gray-300 focus:border-blue-600 outline-none rounded-lg" />
 
                     </div>
 
 
-                    <button type="button"
+                    <button type="submit"
                         className="px-5 py-2.5 !mt-8 w-full bg-blue-600 hover:bg-blue-700 text-white text-sm rounded-lg tracking-wide">Update Profile</button>
                 </form>
+
+                <ToastContainer />
 
                 <hr className="my-8 border-gray-300" />
 
@@ -43,5 +76,10 @@ const EditModal = ({ handleCloseModal, isModalOpen }) => {
         </div>
     );
 };
+
+EditModal.propTypes = {
+    handleCloseModal: PropTypes.func,
+    isModalOpen: PropTypes.bool
+}
 
 export default EditModal;

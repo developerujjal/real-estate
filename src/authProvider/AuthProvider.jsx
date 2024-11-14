@@ -35,6 +35,9 @@ const AuthProvider = ({ children }) => {
         }
     }, [])
 
+    // const userProfileUpdate =() => {
+    //     return updateProfile(user)
+    // }
 
 
     const authInfo = {

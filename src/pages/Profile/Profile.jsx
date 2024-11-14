@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { AuthContext } from "../../assets/createContext/Contexts";
 import EditModal from "../../components/Modal/EditModal";
 
