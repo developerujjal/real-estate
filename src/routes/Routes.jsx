@@ -7,6 +7,7 @@ import ErrorPage from "../pages/ErrorPage/ErrorPage";
 import Contact from "../pages/Contact/Contact";
 import EstatesDetails from "../pages/EstatesDetails/EstatesDetails";
 import PrivateRoutes from "../root/PrivateRoutes";
+import Profile from "../pages/Profile/Profile";
 
 const routes = createBrowserRouter(
     [
@@ -23,6 +24,10 @@ const routes = createBrowserRouter(
                 {
                     path: '/:id',
                     element: <PrivateRoutes><EstatesDetails /></PrivateRoutes>
+                },
+                {
+                    path: 'profile',
+                    element: <PrivateRoutes><Profile /></PrivateRoutes>
                 },
                 {
                     path: 'contact',
